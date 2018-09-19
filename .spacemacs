@@ -51,7 +51,6 @@ values."
      git
      org
      markdown
-     gtags
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
