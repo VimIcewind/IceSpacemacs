@@ -322,6 +322,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
     (setq default-directory "~")
 
+    (setq source-directory "e:/GitHub/emacs")
+
     ;; master
     (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
