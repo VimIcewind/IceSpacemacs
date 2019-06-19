@@ -366,10 +366,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default indent-tabs-mode nil)
-  (setq default-tab-width 8)
-  (setq c-default-style "k&r")
-  (setq c-basic-offset 8)
+  (setq-default
+	 c-basic-offset 8
+	 tab-width 8
+	 c-default-style "linux"
+	 indent-tabs-mode t)
   ;; 关闭自动保存备份文件
   (setq make-backup-files nil)
   ;; 关闭自动保存文件
