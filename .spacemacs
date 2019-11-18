@@ -50,6 +50,7 @@ values."
      ;; helm
      auto-completion
      better-defaults
+     emacs-lisp
      git
      org
      markdown
