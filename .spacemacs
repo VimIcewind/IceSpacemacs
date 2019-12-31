@@ -386,6 +386,8 @@ you should place your code here."
   (setq projectile-tags-command "ctags -Re -f %s %s .")
   ;; 设置.pc为esqlc
   (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
+  ;; 设置visual下 s 为 Vim 默认的删除当前选择的字符并进入插入模式
+  (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
