@@ -312,7 +312,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -380,6 +380,8 @@ you should place your code here."
   ;; 关闭js错误和警告
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
+  ;; 开启 projectile 缓存
+  (setq projectile-enable-caching t)
   ;; 设置生成TAGS的命令
   (setq projectile-tags-command "ctags -Re -f %s %s .")
 )
