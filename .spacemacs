@@ -384,6 +384,8 @@ you should place your code here."
   (setq projectile-enable-caching t)
   ;; 设置生成TAGS的命令
   (setq projectile-tags-command "ctags -Re -f %s %s .")
+  ;; 设置.pc为esqlc
+  (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
