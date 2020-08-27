@@ -391,6 +391,8 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
   ;; 设置visual下 s 为 Vim 默认的删除当前选择的字符并进入插入模式
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
+  ;; 自动加载外部修改过的文件
+  (global-auto-revert-mode 1)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
