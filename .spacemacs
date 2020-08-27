@@ -331,6 +331,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+
+    ;; 指定新建buffer的默认编码为utf-8-unix，换行符为unix的方式
+    (setq default-buffer-file-coding-system 'utf-8-unix)
+
     ;; 设置窗口位置为屏幕左上角(347, 34)
     (set-frame-position (selected-frame) 347 34)
     ;; 设置宽和高
