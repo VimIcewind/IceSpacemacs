@@ -334,6 +334,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
     ;; 指定新建buffer的默认编码为utf-8-unix，换行符为unix的方式
     (setq default-buffer-file-coding-system 'utf-8-unix)
+    ;; 配置默认的编码，以及编码侦测
+    (setq system-time-locale "en_US")
+    (set-language-environment "UTF-8")
+    (setq-default default-buffer-file-coding-system 'utf-8)
+    ;; (setq coding-system-for-write 'utf-8)
+    (set-terminal-coding-system 'utf-8)
+    (set-keyboard-coding-system 'utf-8)
+    (set-selection-coding-system 'utf-8)
+    (setq locale-coding-system 'utf-8)
+    (prefer-coding-system 'gbk)
+    (prefer-coding-system 'utf-8)
 
     ;; 设置窗口位置为屏幕左上角(347, 34)
     (set-frame-position (selected-frame) 347 34)
