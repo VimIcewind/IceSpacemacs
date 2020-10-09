@@ -401,6 +401,8 @@ you should place your code here."
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
   ;; 自动加载外部修改过的文件
   (global-auto-revert-mode 1)
+  ;; org文件默认折叠
+  (setq org-startup-folded t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
