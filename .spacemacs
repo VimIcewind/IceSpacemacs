@@ -395,14 +395,14 @@ you should place your code here."
   (setq projectile-enable-caching t)
   ;; 设置生成TAGS的命令
   (setq projectile-tags-command "ctags -Re -f %s %s .")
-  ;; 设置.pc为esqlc
-  (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
-  ;; 设置visual下 s 为 Vim 默认的删除当前选择的字符并进入插入模式
-  (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
-  ;; 自动加载外部修改过的文件
-  (global-auto-revert-mode 1)
   ;; org文件默认折叠
   (setq org-startup-folded t)
+  ;; 设置visual下 s 为 Vim 默认的删除当前选择的字符并进入插入模式
+  (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
+  ;; 设置.pc为esqlc
+  (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
+  ;; 自动加载外部修改过的文件
+  (global-auto-revert-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
