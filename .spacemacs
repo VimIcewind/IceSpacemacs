@@ -403,6 +403,8 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.pc\\'" . c-mode))
   ;; 自动加载外部修改过的文件
   (global-auto-revert-mode t)
+  ;; 取消高亮当前行
+  (global-hl-line-mode -1)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
