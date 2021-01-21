@@ -339,6 +339,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (set-selection-coding-system 'utf-8-unix)
     ;; 指定新建buffer的默认编码为utf-8-unix，换行符为unix的方式
     (setq-default buffer-file-coding-system 'utf-8-unix)
+    ;; win平台剪贴板需要用utf-16-le
+    (when (eq system-type 'windows-nt)
+      (set-next-selection-coding-system 'utf-16-le)
+      (set-selection-coding-system 'utf-16-le)
+      (set-clipboard-coding-system 'utf-16-le))
     ;; 编码侦测gbk utf-8
     (prefer-coding-system 'gbk)
     (prefer-coding-system 'utf-8-unix)
