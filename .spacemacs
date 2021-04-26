@@ -328,9 +328,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
     ;; master
     (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        '(("melpa-cn" . "https://mirrors.aliyun.com/elpa/melpa/")
+          ("org-cn"   . "https://mirrors.aliyun.com/elpa/org/")
+          ("gnu-cn"   . "https://mirrors.aliyun.com/elpa/gnu/")))
 
     ;; 配置默认的编码
     (set-default-coding-systems 'utf-8-unix)
