@@ -401,7 +401,7 @@ you should place your code here."
   ;; 开启 projectile 缓存
   (setq projectile-enable-caching t)
   ;; 设置生成TAGS的命令
-  (setq projectile-tags-command "ctags -Re -f %s %s .")
+  (setq projectile-tags-command "ctags --langmap=c:.c.pc -Re -f %s %s .")
   ;; org文件默认折叠
   (setq org-startup-folded t)
   ;; 设置visual下 s 为 Vim 默认的删除当前选择的字符并进入插入模式
