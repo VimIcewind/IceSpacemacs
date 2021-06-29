@@ -393,6 +393,8 @@ you should place your code here."
   (setq make-backup-files nil)
   ;; 关闭自动保存文件
   (setq auto-save-default nil)
+  ;; 配置scheme的解释器程序名
+  (setq scheme-program-name "scheme")
   ;; 关闭js错误和警告
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
