@@ -412,6 +412,25 @@ you should place your code here."
   (global-auto-revert-mode t)
   ;; 取消高亮当前行
   ;;(global-hl-line-mode -1)
+  ;; Windows环境 SPC p f 无法使用 报错 FIND: 参数格式错误 需要配置环境变量, 将含有bash的目录至于PATH的最开始最上面
+  ;; 同时需要设置SHELL环境变量为bash 再 SPC p I 清空projectile的缓存
+  ;; 配置projectile-indexing-method
+  ;; (setq projectile-indexing-method "native")
+  ;; 配置projectile-generic-command
+  ;; (setq projectile-generic-command "find . -type f -print0")
+  ;; 配置find的文件
+  ;; (setq find-program "D:/Git/usr/bin/find.exe")
+  ;; Windows path
+  ;; (when (eq system-type 'windows-nt)
+  ;;   ;; Make sure Unix tools are in front of `exec-path'
+  ;;   (let ((bash (executable-find "bash")))
+  ;;     (when bash
+  ;; 	(push (file-name-directory bash) exec-path)))
+  ;;   ;; Update PATH from exec-path
+  ;;   (let ((path (mapcar 'file-truename
+  ;; 			(append exec-path
+  ;; 				(split-string (getenv "PATH") path-separator t)))))
+  ;;     (setenv "PATH" (mapconcat 'identity (delete-dups path) path-separator))))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
