@@ -54,8 +54,8 @@ values."
      org
      markdown
      (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+	    shell-default-height 30
+	    shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      version-control
@@ -95,7 +95,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 600
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -128,7 +128,7 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+				(projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -137,27 +137,27 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         misterioso
-                         deeper-blue
-                         spacemacs-dark
-                         spacemacs-light
-                         adwaita
-                         dichromacy
-                         leuven
-                         tango-dark
-                         tango
-                         wheatgrass
-                         whiteboard
-                         )
+			 misterioso
+			 deeper-blue
+			 spacemacs-dark
+			 spacemacs-light
+			 adwaita
+			 dichromacy
+			 leuven
+			 tango-dark
+			 tango
+			 wheatgrass
+			 whiteboard
+			 )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+			       :size 14
+			       :weight normal
+			       :width normal
+			       :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -203,7 +203,7 @@ values."
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 16
+   dotspacemacs-large-file-size 300
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -321,33 +321,34 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq default-directory "~")
 
-    (setq default-directory "~")
+  (setq source-directory "e:/GitHub/emacs")
 
-    (setq source-directory "e:/GitHub/emacs")
+  ;; master
+  (setq configuration-layer--elpa-archives
+	'(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	  ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+	  ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
-    ;; master
-    (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://mirrors.aliyun.com/elpa/melpa/")
-          ("org-cn"   . "https://mirrors.aliyun.com/elpa/org/")
-          ("gnu-cn"   . "https://mirrors.aliyun.com/elpa/gnu/")))
+  ;; 配置默认的编码
+  (set locale-coding-system 'utf-8-unix)
+  (set-default-coding-systems 'utf-8-unix)
+  (set-terminal-coding-system 'utf-8-unix)
+  (set-keyboard-coding-system 'utf-8-unix)
+  (set-selection-coding-system 'utf-8-unix)
+  ;; 指定新建buffer的默认编码为utf-8-unix，换行符为unix的方式
+  (setq-default buffer-file-coding-system 'utf-8-unix)
+  ;; win平台剪贴板需要用utf-16-le
+  (when (eq system-type 'windows-nt)
+    (set-next-selection-coding-system 'utf-16-le)
+    (set-selection-coding-system 'utf-16-le)
+    (set-clipboard-coding-system 'utf-16-le))
+  ;; 编码侦测gbk utf-8
+  (prefer-coding-system 'gbk)
+  (prefer-coding-system 'utf-8-unix)
 
-    ;; 配置默认的编码
-    (set-default-coding-systems 'utf-8-unix)
-    (set-terminal-coding-system 'utf-8-unix)
-    (set-keyboard-coding-system 'utf-8-unix)
-    (set-selection-coding-system 'utf-8-unix)
-    ;; 指定新建buffer的默认编码为utf-8-unix，换行符为unix的方式
-    (setq-default buffer-file-coding-system 'utf-8-unix)
-    ;; win平台剪贴板需要用utf-16-le
-    (when (eq system-type 'windows-nt)
-      (set-next-selection-coding-system 'utf-16-le)
-      (set-selection-coding-system 'utf-16-le)
-      (set-clipboard-coding-system 'utf-16-le))
-    ;; 编码侦测gbk utf-8
-    (prefer-coding-system 'gbk)
-    (prefer-coding-system 'utf-8-unix)
-
+  (when (eq system-type 'windows-nt)
     ;; 设置窗口位置为屏幕左上角(347, 34)
     (set-frame-position (selected-frame) 347 34)
     ;; 设置宽和高
@@ -355,27 +356,28 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (set-frame-height (selected-frame) 38)
 
     (setq default-frame-alist
-          ' ((vertical-scroll-bars)
-             ;;1366x768
-             (top . 34)
-             (left . 347)
-             ;;1440x900
-             ;;(top . 82)
-             ;;(left . 385)
-             ;;1920x1080
-             ;;(top . 166)
-             ;;(left . 623)
-             (width . 80)
-             (height . 38)
-             ;;(background-color . "black")
-             ;;(foreground-color . "grey")
-             ;;(cursor-color     . "gold1")
-             ;;(mouse-color      . "gold1")
-             (tool-bar-lines . 0)
-             (menu-bar-lines . 0)
-             (right-fringe)
-             (left-fringe)))
-)
+	  ' ((vertical-scroll-bars)
+	     ;;1366x768
+	     (top . 34)
+	     (left . 347)
+	     ;;1440x900
+	     ;;(top . 82)
+	     ;;(left . 385)
+	     ;;1920x1080
+	     ;;(top . 166)
+	     ;;(left . 623)
+	     (width . 80)
+	     (height . 38)
+	     ;;(background-color . "black")
+	     ;;(foreground-color . "grey")
+	     ;;(cursor-color     . "gold1")
+	     ;;(mouse-color      . "gold1")
+	     (tool-bar-lines . 0)
+	     (menu-bar-lines . 0)
+	     (right-fringe)
+	     (left-fringe)))
+    )
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -385,16 +387,17 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default
-	 c-basic-offset 8
-	 tab-width 8
-	 c-default-style "linux"
-	 indent-tabs-mode t)
+   c-basic-offset 8
+   tab-width 8
+   c-default-style "linux"
+   indent-tabs-mode t)
   ;; 关闭自动保存备份文件
   (setq make-backup-files nil)
   ;; 关闭自动保存文件
   (setq auto-save-default nil)
   ;; 配置scheme的解释器程序名
   (setq scheme-program-name "scheme")
+  ;; (push "D:/Scheme/bin/a6nt/" exec-path)
   ;; 关闭js错误和警告
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
@@ -413,7 +416,7 @@ you should place your code here."
   ;; 取消高亮当前行
   ;;(global-hl-line-mode -1)
   ;; Windows环境 SPC p f 无法使用 报错 FIND: 参数格式错误 需要配置环境变量, 将含有bash的目录至于PATH的最开始最上面
-  ;; 同时需要设置SHELL环境变量为bash 再 SPC p I 清空projectile的缓存
+  ;; 同时需要设置SHELL环境变量为bash  再 SPC p I 清空projectile的缓存
   ;; 配置projectile-indexing-method
   ;; (setq projectile-indexing-method "native")
   ;; 配置projectile-generic-command
@@ -431,7 +434,7 @@ you should place your code here."
   ;; 			(append exec-path
   ;; 				(split-string (getenv "PATH") path-separator t)))))
   ;;     (setenv "PATH" (mapconcat 'identity (delete-dups path) path-separator))))
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -440,9 +443,17 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (bind-key goto-chg popup powershell iedit anzu avy dash undo-tree powerline smartparens async lv projectile evil helm helm-core hydra yapfify web-mode web-beautify vimrc-mode toml-mode tide typescript-mode tagedit sql-indent slim-mode scss-mode sass-mode racer pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements omnisharp livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc helm-css-scss haml-mode go-guru go-eldoc flycheck-rust emmet-mode disaster dactyl-mode cython-mode csharp-mode company-web web-completion-data company-tern dash-functional tern company-go go-mode company-c-headers company-anaconda coffee-mode cmake-mode clang-format cargo rust-mode anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (nadvice tree-sitter-langs tree-sitter-indent tree-sitter tsc bind-key goto-chg popup powershell iedit anzu avy dash undo-tree powerline smartparens async lv projectile evil helm helm-core hydra yapfify web-mode web-beautify vimrc-mode toml-mode tide typescript-mode tagedit sql-indent slim-mode scss-mode sass-mode racer pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements omnisharp livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc helm-css-scss haml-mode go-guru go-eldoc flycheck-rust emmet-mode disaster dactyl-mode cython-mode csharp-mode company-web web-completion-data company-tern dash-functional tern company-go go-mode company-c-headers company-anaconda coffee-mode cmake-mode clang-format cargo rust-mode anaconda-mode pythonic xterm-color unfill smeargle shell-pop orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor eshell-z eshell-prompt-extras esh-help diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(projectile-indexing-method (quote alien))
+ '(warning-suppress-types
+   (quote
+    ((use-package)
+     (use-package)
+     (use-package)
+     (use-package)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
