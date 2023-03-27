@@ -348,7 +348,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (prefer-coding-system 'gbk)
   (prefer-coding-system 'utf-8-unix)
 
-  (when (eq system-type 'windows-nt)
+  (when (display-graphic-p)
     ;; 设置窗口位置为屏幕左上角(347, 34)
     (set-frame-position (selected-frame) 347 34)
     ;; 设置宽和高
