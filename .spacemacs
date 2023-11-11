@@ -356,28 +356,27 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (set-frame-height (selected-frame) 38)
 
     (setq default-frame-alist
-	  ' ((vertical-scroll-bars)
-	     ;;1366x768
-	     (top . 34)
-	     (left . 347)
-	     ;;1440x900
-	     ;;(top . 82)
-	     ;;(left . 385)
-	     ;;1920x1080
-	     ;;(top . 166)
-	     ;;(left . 623)
-	     (width . 80)
-	     (height . 38)
-	     ;;(background-color . "black")
-	     ;;(foreground-color . "grey")
-	     ;;(cursor-color     . "gold1")
-	     ;;(mouse-color      . "gold1")
-	     (tool-bar-lines . 0)
-	     (menu-bar-lines . 0)
-	     (right-fringe)
-	     (left-fringe)))
-    )
-  )
+          ' ((vertical-scroll-bars)
+             ;;1366x768
+             (top . 34)
+             (left . 347)
+             ;;1440x900
+             ;;(top . 82)
+             ;;(left . 385)
+             ;;1920x1080
+             ;;(top . 56)
+             ;;(left . 546)
+             (width . 80)
+             (height . 40)
+             ;;(background-color . "black")
+             ;;(foreground-color . "grey")
+             ;;(cursor-color     . "gold1")
+             ;;(mouse-color      . "gold1")
+             (tool-bar-lines . 0)
+             (menu-bar-lines . 0)
+             (right-fringe)
+             (left-fringe)))
+)
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
